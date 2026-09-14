@@ -136,6 +136,8 @@ class GestorPersistencia:
         # Si el respaldo no existe o también falla, retornar valores por defecto.
         print("[AVISO] No se pudo recuperar el respaldo. Usando valores por defecto.")
         return self.config_por_defecto.copy()
+    
+    def _limpiar_temporal(self):
         
         
         
