@@ -132,6 +132,10 @@ class GestorPersistencia:
                     return datos
             except Exception as e:
                 print(f"[ERROR] El archivo de respaldo también está dañado o es ilegible: {e}")
+                
+        # Si el respaldo no existe o también falla, retornar valores por defecto.
+        print("[AVISO] No se pudo recuperar el respaldo. Usando valores por defecto.")
+        return self.config_por_defecto.copy()
         
         
         
