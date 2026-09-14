@@ -111,6 +111,12 @@ class GestorPersistencia:
             self._limpiar_temporal()
             return False
         
+        except Exception as e:
+            # Captura de cualquier otra excepción imprevista durante el proceso de guardado.
+            print(f"[ERROR] Falló el proceso de guardado seguro: {e}")
+            self._limpiar_temporal()
+            return False
+        
         
         
             
