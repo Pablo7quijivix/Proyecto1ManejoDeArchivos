@@ -29,6 +29,18 @@ class GestorPersistencia:
         self.ruta_temporal = ruta_archivo + ".temp"
         self.ruta_respaldo = ruta_archivo + ".bak"
         
+        #Definiendo la configuracion por defecto ante cualquier problama o archivo ausente.
+        self.config_por_defecto = {
+            "nombre_usuario": "Usuario",
+            "tema_interfaz":"claro",
+            "idioma":"es-Es",
+            "tamanio_fuente":"12",
+            "color_barra_menu":"#f0f0f0",
+            "color_letra":"#000000",
+            "foto_perfil":""
+            
+        }
+        
         
         
         
