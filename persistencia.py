@@ -42,11 +42,19 @@ class GestorPersistencia:
         }
         
     def cargar_configuracion(self):
-        '''
         """
         Lee la configuración desde el archivo JSON utilizando codificación UTF-8.
         Objetivo: Recuperar los ajustes previos del usuario de forma segura, manejando
         excepciones por archivo ausente, corrupción o problemas de permisos.
         """
-        '''
+        
+        #verificacion si el archivo principal de configuracion
+        #existe fisicamente en el disco
+        
+        if not os.path.exists(self.ruta_archivo):
+            print("[AVISO] Archivo de configuración ausente. Cargando valores por defecto.")
+            return self.config_por_defecto.copy()
+            
+        
+        
         
