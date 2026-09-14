@@ -54,6 +54,22 @@ class GestorPersistencia:
         if not os.path.exists(self.ruta_archivo):
             print("[AVISO] Archivo de configuración ausente. Cargando valores por defecto.")
             return self.config_por_defecto.copy()
+        
+        try:
+            # Apertura explícita del archivo en modo lectura con codificación UTF-8 para tildes y eñes.
+            with open(self.ruta_archivo, "r", encoding="utf-8") as archivo:
+                datos = json.load(archivo)
+                # Validar que el contenido decodificado sea un diccionario válido.
+                if not isinstance(datos, dict):
+                    raise ValueError("El contenido del archivo JSON no es un diccionario válido.")
+                return datos
+            
+        except (json.JSONDecodeError, ValueError) as e:
+            # Manejo específico para archivos corruptos o con formato JSON inválido.
+            print(f"[ERROR CRÍTICO] El archivo de configuración está corrupto ({e}).")
+            print("[INFO] Intentando restaurar desde el archivo de respaldo (.bak)...")
+            return self._restaurar_desde_respaldo()
+        
             
         
         
