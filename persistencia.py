@@ -124,6 +124,14 @@ class GestorPersistencia:
         Objetivo: Proveer tolerancia a fallos restaurando un estado previo válido cuando
         el archivo principal se corrompe.
         """
+        if os.path.exists(self.ruta_respaldo):
+            try:
+                with open(self.ruta_respaldo, "r", encoding="utf-8") as archivo_bak:
+                    datos = json.load(archivo_bak)
+                    print("[ÉXITO] Configuración restaurada correctamente desde el respaldo (.bak).")
+                    return datos
+            except Exception as e:
+                print(f"[ERROR] El archivo de respaldo también está dañado o es ilegible: {e}")
         
         
         
