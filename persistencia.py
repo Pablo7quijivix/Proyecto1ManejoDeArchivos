@@ -138,6 +138,15 @@ class GestorPersistencia:
         return self.config_por_defecto.copy()
     
     def _limpiar_temporal(self):
+        """
+        Elimina el archivo temporal en caso de que ocurra una falla durante la escritura.
+        Objetivo: Evitar dejar archivos basura (.tmp) en el sistema de archivos del usuario.
+        """
+        if os.path.exists(self.ruta_temporal):
+            try:
+                os.remove(self.ruta_temporal)
+            except Exception:
+                pass
         
         
         
