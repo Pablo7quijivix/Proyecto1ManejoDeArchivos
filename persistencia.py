@@ -76,6 +76,11 @@ class GestorPersistencia:
             print("[INFO] Degradando al comportamiento por defecto.")
             return self.config_por_defecto.copy()
         
+        except Exception as e:
+            # Captura general de seguridad para evitar cualquier traceback no controlado.
+            print(f"[ERROR INESPERADO] Ocurrió un error al leer el archivo: {e}")
+            return self.config_por_defecto.copy()
+        
             
         
         
