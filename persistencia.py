@@ -117,6 +117,15 @@ class GestorPersistencia:
             self._limpiar_temporal()
             return False
         
+    
+    def _restaurar_desde_respaldo(self):
+        """
+        Intenta recuperar la configuración a partir del archivo de respaldo (.bak).
+        Objetivo: Proveer tolerancia a fallos restaurando un estado previo válido cuando
+        el archivo principal se corrompe.
+        """
+        
+        
         
         
             
