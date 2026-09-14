@@ -70,6 +70,12 @@ class GestorPersistencia:
             print("[INFO] Intentando restaurar desde el archivo de respaldo (.bak)...")
             return self._restaurar_desde_respaldo()
         
+        except PermissionError:
+            # Manejo de errores ante la falta de permisos de lectura en el sistema operativo.
+            print("[ERROR] No hay permisos de lectura sobre el archivo de configuración.")
+            print("[INFO] Degradando al comportamiento por defecto.")
+            return self.config_por_defecto.copy()
+        
             
         
         
