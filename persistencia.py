@@ -21,5 +21,15 @@ class GestorPersistencia:
     '''
     
     def __init__(self, ruta_archivo= "config.json"):
+        """
+        Inicializa el gestor de persistencia con la ruta del archivo de configuración.
+        Objetivo: Definir las rutas base para el archivo principal, temporal y de respaldo.
+        """
+        self.ruta_archivo = ruta_archivo
+        self.ruta_temporal = ruta_archivo + ".temp"
+        self.ruta_respaldo = ruta_archivo + ".bak"
+        
+        
+        
         
     
