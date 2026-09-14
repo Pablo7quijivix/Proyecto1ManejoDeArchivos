@@ -92,6 +92,10 @@ class GestorPersistencia:
             # Paso 1: Si el archivo original ya existe, crear una copia de respaldo (.bak) antes de sobrescribir.
             if os.path.exists(self.ruta_archivo):
                 shutil.copy2(self.ruta_archivo, self.ruta_respaldo)
+            
+            # Paso 2: Escribir primero la información en un archivo temporal (.tmp) para asegurar atomicidad.
+            with open(self.ruta_temporal, "w", encoding="utf-8") as archivo_tmp:
+                json.dump(nuevos_datos, archivo_tmp, indent=4, ensure_ascii=False)
         
         
         
