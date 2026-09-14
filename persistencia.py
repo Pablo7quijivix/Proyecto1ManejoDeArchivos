@@ -96,6 +96,14 @@ class GestorPersistencia:
             # Paso 2: Escribir primero la información en un archivo temporal (.tmp) para asegurar atomicidad.
             with open(self.ruta_temporal, "w", encoding="utf-8") as archivo_tmp:
                 json.dump(nuevos_datos, archivo_tmp, indent=4, ensure_ascii=False)
+                
+            # Paso 3: Reemplazar el archivo original con el archivo temporal
+            if os.path.exists(self.ruta_archivo):
+                os.replace(self.ruta_temporal, self.ruta_archivo)
+            else:
+                os.rename(self.ruta_temporal, self.ruta_archivo)
+                
+            return True
         
         
         
