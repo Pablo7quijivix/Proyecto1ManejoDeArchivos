@@ -105,6 +105,12 @@ class GestorPersistencia:
                 
             return True
         
+        except PermissionError:
+            # Manejo de errores ante la falta de permisos de escritura en el directorio o archivo.
+            print("[ERROR] Permiso denegado para escribir en el archivo de configuración.")
+            self._limpiar_temporal()
+            return False
+        
         
         
             
