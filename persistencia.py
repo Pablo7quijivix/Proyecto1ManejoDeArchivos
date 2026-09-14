@@ -147,6 +147,9 @@ class GestorPersistencia:
                 os.remove(self.ruta_temporal)
             except Exception:
                 pass
+            
+            
+# comentario para agregar el commit de finalizacion del modulo de persistencia de datos
         
         
         
