@@ -81,6 +81,20 @@ class GestorPersistencia:
             print(f"[ERROR INESPERADO] Ocurrió un error al leer el archivo: {e}")
             return self.config_por_defecto.copy()
         
+    
+    def guardar_configuracion(self, nuevos_datos):
+        """
+        Guarda los datos de configuración utilizando un mecanismo de escritura segura (Write-Ahead / Archivo Temporal).
+        Objetivo: Evitar la corrupción de datos ante cierres abruptos durante la escritura,
+        creando primero un respaldo (.bak) y escribiendo mediante un archivo temporal (.tmp).
+        """
+        try:
+            # Paso 1: Si el archivo original ya existe, crear una copia de respaldo (.bak) antes de sobrescribir.
+            if os.path.exists(self.ruta_archivo):
+                shutil.copy2(self.ruta_archivo, self.ruta_respaldo)
+        
+        
+        
             
         
         
