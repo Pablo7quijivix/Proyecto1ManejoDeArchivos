@@ -302,7 +302,12 @@ class AplicacionPrincipal(tk.Tk):
         self._actualizar_vista_estado(nueva_config)
         self._aplicar_configuracion_visual(nueva_config)
         
-        
+    def _accion_simulada(self, nombre_accion):
+        """
+        Maneja las opciones simuladas del menú principal.
+        Objetivo: Indicar al usuario que la opción es simulada tal como pide el enunciado.
+        """
+        messagebox.showinfo("Menú Simulado", f"Has seleccionado la opción simulada:\n\n{nombre_accion}")
         
         
         
