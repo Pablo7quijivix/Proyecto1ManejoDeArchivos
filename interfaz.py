@@ -114,3 +114,14 @@ class VentanaConfiguracion(tk.Toplevel):
         if color[1]:
             self.color_menu_val = color[1]
             self.btn_color_menu.config(bg=self.color_menu_val)
+            
+            
+    def _seleccionar_color_letra(self):
+        """
+        Abre el selector nativo de colores para el texto.
+        Objetivo: Permitir personalizar el color tipográfico de la interfaz.
+        """
+        color = colorchooser.askcolor(title="Seleccionar color de letra", initialcolor=self.color_letra_val)
+        if color[1]:
+            self.color_letra_val = color[1]
+            self.btn_color_letra.config(bg=self.color_letra_val)
