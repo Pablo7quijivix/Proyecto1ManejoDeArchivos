@@ -220,6 +220,13 @@ class AplicacionPrincipal(tk.Tk):
         barra_menu.add_cascade(label="Edición", menu=menu_edicion)
         
         
+        # 3. Menú Ver (Simulado)
+        menu_ver = Menu(barra_menu, tearoff=0)
+        menu_ver.add_command(label="Zoom In (Simulado)", command=lambda: self._accion_simulada("Ver -> Zoom In"))
+        menu_ver.add_command(label="Zoom Out (Simulado)", command=lambda: self._accion_simulada("Ver -> Zoom Out"))
+        barra_menu.add_cascade(label="Ver", menu=menu_ver)
+        
+        
         
         
         
