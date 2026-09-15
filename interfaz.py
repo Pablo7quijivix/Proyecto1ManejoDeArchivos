@@ -65,3 +65,11 @@ class VentanaConfiguracion(tk.Toplevel):
         self.combo_idioma = tk.Entry(padding_frame) # Simplificado para entrada de texto o selección
         self.combo_idioma.pack(fill=tk.X, pady=(0, 10))
         self.combo_idioma.insert(0, self.datos_actuales.get("idioma", "es-ES"))
+        
+        
+        # 4. Tamaño de fuente (Número entero)
+        tk.Label(padding_frame, text="Tamaño de fuente (entero):", anchor="w").pack(fill=tk.X, pady=(0, 2))
+        self.spin_fuente = tk.Spinbox(padding_frame, from_=8, to=32)
+        self.spin_fuente.pack(fill=tk.X, pady=(0, 10))
+        self.spin_fuente.delete(0, tk.END)
+        self.spin_fuente.insert(0, str(self.datos_actuales.get("tamanio_fuente", 12)))
