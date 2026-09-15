@@ -86,3 +86,19 @@ class VentanaConfiguracion(tk.Toplevel):
         self.color_letra_val = self.datos_actuales.get("color_letra", "#000000")
         self.btn_color_letra = tk.Button(frame_colores, text="Color de Letra", bg=self.color_letra_val, fg="white" if self.color_letra_val=="#000000" else "black", command=self._seleccionar_color_letra)
         self.btn_color_letra.pack(side=tk.LEFT, expand=True, fill=tk.X, padx=(5, 0))
+        
+        
+        # 6. Foto de perfil (Seleccionada desde el sistema de archivos)
+        tk.Label(padding_frame, text="Foto de perfil:", anchor="w").pack(fill=tk.X, pady=(0, 2))
+        frame_foto = tk.Frame(padding_frame)
+        frame_foto.pack(fill=tk.X, pady=(0, 15))
+        
+        self.lbl_ruta_foto = tk.Label(frame_foto, text=self.datos_actuales.get("foto_perfil", "Ninguna seleccionada"), fg="gray", anchor="w")
+        self.lbl_ruta_foto.pack(side=tk.LEFT, fill=tk.X, expand=True)
+        
+        btn_examinar = tk.Button(frame_foto, text="Examinar...", command=self._seleccionar_foto)
+        btn_examinar.pack(side=tk.RIGHT)
+
+        # Botón para guardar cambios
+        btn_guardar = tk.Button(padding_frame, text="Guardar Configuración", bg="#4CAF50", fg="white", font=("Arial", 10, "bold"), command=self._guardar_cambios)
+        btn_guardar.pack(fill=tk.X, pady=(10, 0))
