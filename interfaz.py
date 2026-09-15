@@ -286,6 +286,14 @@ class AplicacionPrincipal(tk.Tk):
             pass
         
         
+    def _abrir_settings(self):
+        """
+        Abre la ventana de configuración (Settings).
+        Objetivo: Desplegar el formulario de ajustes de usuario.
+        """
+        VentanaConfiguracion(self, self.gestor, self._on_configuracion_actualizada)
+        
+        
         
         
         
