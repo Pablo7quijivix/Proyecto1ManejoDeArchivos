@@ -172,3 +172,29 @@ class VentanaConfiguracion(tk.Toplevel):
             messagebox.showerror("Error de Guardado", "No se pudo guardar la configuración debido a un problema de permisos o de disco.")
             
     
+class AplicacionPrincipal(tk.Tk):
+    """
+    Ventana principal de la aplicación con menú simulado y área de visualización de estado.
+    Objetivo: Cumplir con la estructura de menú solicitada y proporcionar acceso a los Settings.
+    """
+    
+    def __init__(self, gestor_persistencia):
+        """
+        Inicializa la ventana principal y carga la configuración inicial al arrancar.
+        Objetivo: Demostrar la carga inicial sin excepciones no controladas si el archivo no existe.
+        """
+        super().__init__()
+        self.gestor = gestor_persistencia
+        
+        self.title("Aplicación de Escritorio - Gestión de Configuración")
+        self.geometry("500x350")
+        
+        # Carga inicial: leer configuración al iniciar la aplicación.
+        self.configuracion_actual = self.gestor.cargar_configuracion()
+        
+        self._crear_menu()
+        self._crear_interfaz_principal()
+        self._aplicar_configuracion_visual()
+        
+        
+    
