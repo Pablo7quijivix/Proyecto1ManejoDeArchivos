@@ -102,3 +102,15 @@ class VentanaConfiguracion(tk.Toplevel):
         # Botón para guardar cambios
         btn_guardar = tk.Button(padding_frame, text="Guardar Configuración", bg="#4CAF50", fg="white", font=("Arial", 10, "bold"), command=self._guardar_cambios)
         btn_guardar.pack(fill=tk.X, pady=(10, 0))
+        
+        
+        
+    def _seleccionar_color_menu(self):
+        """
+        Abre el selector nativo de colores para la barra de menú.
+        Objetivo: Facilitar la elección visual del color y actualizar la vista previa del botón.
+        """
+        color = colorchooser.askcolor(title="Seleccionar color de la barra de menú", initialcolor=self.color_menu_val)
+        if color[1]:
+            self.color_menu_val = color[1]
+            self.btn_color_menu.config(bg=self.color_menu_val)
