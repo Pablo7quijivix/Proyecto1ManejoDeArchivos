@@ -57,3 +57,11 @@ class VentanaConfiguracion(tk.Toplevel):
         frame_tema.pack(fill=tk.X, pady=(0, 10))
         tk.Radiobutton(frame_tema, text="Claro", variable=self.var_tema, value="claro").pack(side=tk.LEFT, padx=(0, 15))
         tk.Radiobutton(frame_tema, text="Oscuro", variable=self.var_tema, value="oscuro").pack(side=tk.LEFT)
+        
+        
+        # 3. Idioma
+        tk.Label(padding_frame, text="Idioma:", anchor="w").pack(fill=tk.X, pady=(0, 2))
+        self.var_idioma = tk.StringVar(value=self.datos_actuales.get("idioma", "es-ES"))
+        self.combo_idioma = tk.Entry(padding_frame) # Simplificado para entrada de texto o selección
+        self.combo_idioma.pack(fill=tk.X, pady=(0, 10))
+        self.combo_idioma.insert(0, self.datos_actuales.get("idioma", "es-ES"))
