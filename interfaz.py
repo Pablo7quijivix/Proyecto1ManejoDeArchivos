@@ -73,3 +73,16 @@ class VentanaConfiguracion(tk.Toplevel):
         self.spin_fuente.pack(fill=tk.X, pady=(0, 10))
         self.spin_fuente.delete(0, tk.END)
         self.spin_fuente.insert(0, str(self.datos_actuales.get("tamanio_fuente", 12)))
+        
+        
+        # 5. Colores (Barra de menú y Letra) mediante selectores nativos de la librería gráfica
+        frame_colores = tk.Frame(padding_frame)
+        frame_colores.pack(fill=tk.X, pady=(0, 10))
+        
+        self.color_menu_val = self.datos_actuales.get("color_barra_menu", "#f0f0f0")
+        self.btn_color_menu = tk.Button(frame_colores, text="Color Barra Menú", bg=self.color_menu_val, command=self._seleccionar_color_menu)
+        self.btn_color_menu.pack(side=tk.LEFT, expand=True, fill=tk.X, padx=(0, 5))
+
+        self.color_letra_val = self.datos_actuales.get("color_letra", "#000000")
+        self.btn_color_letra = tk.Button(frame_colores, text="Color de Letra", bg=self.color_letra_val, fg="white" if self.color_letra_val=="#000000" else "black", command=self._seleccionar_color_letra)
+        self.btn_color_letra.pack(side=tk.LEFT, expand=True, fill=tk.X, padx=(5, 0))
