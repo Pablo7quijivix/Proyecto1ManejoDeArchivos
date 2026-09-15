@@ -226,6 +226,13 @@ class AplicacionPrincipal(tk.Tk):
         menu_ver.add_command(label="Zoom Out (Simulado)", command=lambda: self._accion_simulada("Ver -> Zoom Out"))
         barra_menu.add_cascade(label="Ver", menu=menu_ver)
         
+        # 4. Menú Settings (Funcional, abre la ventana de configuración)
+        menu_settings = Menu(barra_menu, tearoff=0)
+        menu_settings.add_command(label="Preferencias...", command=self._abrir_settings)
+        barra_menu.add_cascade(label="Settings", menu=menu_settings)
+        
+        self.barra_menu_ref = barra_menu
+        
         
         
         
