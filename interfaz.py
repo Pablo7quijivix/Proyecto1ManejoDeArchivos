@@ -213,6 +213,15 @@ class AplicacionPrincipal(tk.Tk):
         barra_menu.add_cascade(label="Archivo", menu=menu_archivo)
         
         
+        # 2. Menú Edición (Simulado)
+        menu_edicion = Menu(barra_menu, tearoff=0)
+        menu_edicion.add_command(label="Deshacer (Simulado)", command=lambda: self._accion_simulada("Edición -> Deshacer"))
+        menu_edicion.add_command(label="Rehacer (Simulado)", command=lambda: self._accion_simulada("Edición -> Rehacer"))
+        barra_menu.add_cascade(label="Edición", menu=menu_edicion)
+        
+        
+        
+        
         
         
     
