@@ -251,6 +251,41 @@ class AplicacionPrincipal(tk.Tk):
         self._actualizar_vista_estado(self.configuracion_actual)
         
         
+    def _actualizar_vista_estado(self, config):
+        """
+        Actualiza el texto informativo con los valores actuales de configuración.
+        Objetivo: Reflejar de inmediato las modificaciones realizadas por el usuario.
+        """
+        self.txt_estado.config(state=tk.NORMAL)
+        self.txt_estado.delete("1.0", tk.END)
+        
+        texto = (
+            f"• Nombre de usuario: {config.get('nombre_usuario')}\n"
+            f"• Tema de interfaz: {config.get('tema_interfaz')}\n"
+            f"• Idioma: {config.get('idioma')}\n"
+            f"• Tamaño de fuente: {config.get('tamanio_fuente')}\n"
+            f"• Color barra de menú: {config.get('color_barra_menu')}\n"
+            f"• Color de letra: {config.get('color_letra')}\n"
+            f"• Foto de perfil: {config.get('foto_perfil') or 'Ninguna'}"
+        )
+        self.txt_estado.insert(tk.END, texto)
+        self.txt_estado.config(state=tk.DISABLED)
+
+    def _aplicar_configuracion_visual(self, config=None):
+        """
+        Aplica de forma dinámica los estilos visuales configurados por el usuario.
+        Objetivo: Demostrar que los cambios en Settings afectan el comportamiento visual de la app.
+        """
+        if config is None:
+            config = self.configuracion_actual
+            
+        # Aplicar colores configurados a la barra de menú o elementos si es soportado
+        try:
+            self.barra_menu_ref.config(bg=config.get("color_barra_menu", "#f0f0f0"))
+        except Exception:
+            pass
+        
+        
         
         
         
