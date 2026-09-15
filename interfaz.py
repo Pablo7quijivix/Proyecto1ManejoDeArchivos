@@ -196,5 +196,23 @@ class AplicacionPrincipal(tk.Tk):
         self._crear_interfaz_principal()
         self._aplicar_configuracion_visual()
         
+    def _crear_menu(self):
+        """
+        Crea el menú principal simulado con las opciones solicitadas: Archivo, Edición, Ver y Settings.
+        Objetivo: Proveer la estructura de navegación requerida por el laboratorio.
+        """
+        barra_menu = Menu(self)
+        self.config(menu=barra_menu)
+
+        # 1. Menú Archivo (Subopciones simuladas)
+        menu_archivo = Menu(barra_menu, tearoff=0)
+        menu_archivo.add_command(label="Nuevo (Simulado)", command=lambda: self._accion_simulada("Archivo -> Nuevo"))
+        menu_archivo.add_command(label="Abrir (Simulado)", command=lambda: self._accion_simulada("Archivo -> Abrir"))
+        menu_archivo.add_separator()
+        menu_archivo.add_command(label="Salir", command=self.quit)
+        barra_menu.add_cascade(label="Archivo", menu=menu_archivo)
+        
+        
+        
         
     
