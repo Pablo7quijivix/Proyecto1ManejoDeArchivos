@@ -125,3 +125,15 @@ class VentanaConfiguracion(tk.Toplevel):
         if color[1]:
             self.color_letra_val = color[1]
             self.btn_color_letra.config(bg=self.color_letra_val)
+            
+    def _seleccionar_foto(self):
+        """
+        Abre el explorador de archivos nativo del sistema para elegir una imagen de perfil.
+        Objetivo: Obtener la ruta absoluta o relativa del archivo de imagen seleccionado.
+        """
+        ruta = filedialog.askopenfilename(
+            title="Seleccionar foto de perfil",
+            filetypes=[("Archivos de Imagen", "*.png *.jpg *.jpeg *.bmp"), ("Todos los archivos", "*.*")]
+        )
+        if ruta:
+            self.lbl_ruta_foto.config(text=ruta, fg="black")
