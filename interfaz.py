@@ -293,6 +293,15 @@ class AplicacionPrincipal(tk.Tk):
         """
         VentanaConfiguracion(self, self.gestor, self._on_configuracion_actualizada)
         
+    def _on_configuracion_actualizada(self, nueva_config):
+        """
+        Callback ejecutado al guardar con éxito nuevos ajustes en la ventana de Settings.
+        Objetivo: Sincronizar el estado en memoria y actualizar la interfaz principal.
+        """
+        self.configuracion_actual = nueva_config
+        self._actualizar_vista_estado(nueva_config)
+        self._aplicar_configuracion_visual(nueva_config)
+        
         
         
         
