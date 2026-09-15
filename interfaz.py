@@ -233,6 +233,23 @@ class AplicacionPrincipal(tk.Tk):
         
         self.barra_menu_ref = barra_menu
         
+    
+    def _crear_interfaz_principal(self):
+        """
+        Crea los elementos visuales informativos en la ventana principal.
+        Objetivo: Mostrar al usuario la configuración actual cargada desde el archivo JSON.
+        """
+        frame_principal = tk.Frame(self, padx=20, pady=20)
+        frame_principal.pack(fill=tk.BOTH, expand=True)
+
+        tk.Label(frame_principal, text="Estado Actual de la Configuración", font=("Arial", 12, "bold")).pack(pady=(0, 10))
+
+        # Área de texto para visualizar los parámetros cargados
+        self.txt_estado = tk.Text(frame_principal, height=10, width=50, state=tk.DISABLED)
+        self.txt_estado.pack(fill=tk.BOTH, expand=True, pady=(0, 10))
+
+        self._actualizar_vista_estado(self.configuracion_actual)
+        
         
         
         
