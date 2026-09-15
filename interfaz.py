@@ -137,3 +137,38 @@ class VentanaConfiguracion(tk.Toplevel):
         )
         if ruta:
             self.lbl_ruta_foto.config(text=ruta, fg="black")
+            
+            
+    def _guardar_cambios(self):
+        """
+        Recopila los datos de los campos de la interfaz y solicita su almacenamiento seguro.
+        Objetivo: Validar los tipos de datos (como el tamaño de fuente entero) y disparar el guardado.
+        """
+        try:
+            tamanio = int(self.spin_fuente.get())
+        except ValueError:
+            messagebox.showerror("Error de Validación", "El tamaño de fuente debe ser un número entero válido.")
+            return
+
+        # Construir el diccionario con los nuevos valores, asegurando soporte para tildes y eñes (UTF-8).
+        nuevos_datos = {
+            "nombre_usuario": self.entry_usuario.get(),
+            "tema_interfaz": self.var_tema.get(),
+            "idioma": self.combo_idioma.get(),
+            "tamanio_fuente": tamanio,
+            "color_barra_menu": self.color_menu_val,
+            "color_letra": self.color_letra_val,
+            "foto_perfil": self.lbl_ruta_foto.cget("text") if self.lbl_ruta_foto.cget("text") != "Ninguna seleccionada" else ""
+        }
+
+        # Invocar al gestor de persistencia para realizar la escritura segura y atómica.
+        exito = self.gestor.guardar_configuracion(nuevos_datos)
+        
+        if exito:
+            messagebox.showinfo("Éxito", "Configuración guardada correctamente de forma segura.")
+            self.callback_actualizar(nuevos_datos)
+            self.destroy()
+        else:
+            messagebox.showerror("Error de Guardado", "No se pudo guardar la configuración debido a un problema de permisos o de disco.")
+            
+    
