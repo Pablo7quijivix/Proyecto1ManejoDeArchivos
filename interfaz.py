@@ -34,3 +34,26 @@ class VentanaConfiguracion(tk.Toplevel):
         self.datos_actuales = self.gestor.cargar_configuracion()
         
         self._crear_widgets()
+        
+    def _crear_widgets(self):
+        """
+        Crea y posiciona los elementos visuales de los ajustes (campos, etiquetas y botones).
+        Objetivo: Proveer controles intuitivos para cada una de las opciones requeridas.
+        """
+        # Contenedor principal con margen interno.
+        padding_frame = tk.Frame(self, padx=20, pady=20)
+        padding_frame.pack(fill=tk.BOTH, expand=True)
+
+        # 1. Nombre de usuario
+        tk.Label(padding_frame, text="Nombre de usuario:", anchor="w").pack(fill=tk.X, pady=(0, 2))
+        self.entry_usuario = tk.Entry(padding_frame)
+        self.entry_usuario.pack(fill=tk.X, pady=(0, 10))
+        self.entry_usuario.insert(0, self.datos_actuales.get("nombre_usuario", ""))
+
+        # 2. Tema de interfaz (Claro / Oscuro)
+        tk.Label(padding_frame, text="Tema de interfaz:", anchor="w").pack(fill=tk.X, pady=(0, 2))
+        self.var_tema = tk.StringVar(value=self.datos_actuales.get("tema_interfaz", "claro"))
+        frame_tema = tk.Frame(padding_frame)
+        frame_tema.pack(fill=tk.X, pady=(0, 10))
+        tk.Radiobutton(frame_tema, text="Claro", variable=self.var_tema, value="claro").pack(side=tk.LEFT, padx=(0, 15))
+        tk.Radiobutton(frame_tema, text="Oscuro", variable=self.var_tema, value="oscuro").pack(side=tk.LEFT)
